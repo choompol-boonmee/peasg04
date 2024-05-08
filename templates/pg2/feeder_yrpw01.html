@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_year_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER LOAD{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+FEEDER LOAD
+{{ssid}}-{{fdid}}
+</caption>
+<thead><tr>
+<td>DAY</td>
+<td>PEAK+</td>
+<td>CNT+</td>
+<td>SUM+</td>
+<td>AVG+</td>
+<td>ENER+</td>
+<td>MID day</td>
+<td>PEAK-</td>
+<td>CNT-</td>
+<td>SUM-</td>
+<td>AVG-</td>
+<td>ENER-</td>
+</tr></thead>
+<tbody>
+{% for dy in year_load.loads %}
+<tr>
+<td>
+<a href='/feeder_day01/{{ssid}}/{{fdid}}/{{dy.day}}'>
+{{loop.index}}
+</a></td>
+<td>{{"{:.2?}"|format(dy.power_quality.pos_peak)}}</td>
+<td>{{"{:?}"|format(dy.power_quality.pos_cnt)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.pos_sum)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.pos_avg)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.pos_energy)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.mid_day_energy)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.neg_peak)}}</td>
+<td>{{"{:?}"|format(dy.power_quality.neg_cnt)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.neg_sum)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.neg_avg)}}</td>
+<td>{{"{:.2?}"|format(dy.power_quality.neg_energy)}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

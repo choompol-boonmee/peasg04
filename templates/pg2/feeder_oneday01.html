@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}FEEDER ONEDAY{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+FEEDER ONEDAY
+{{ssid}}-{{fdid}}-{{day}}
+</caption>
+<thead><tr>
+<td>TIME</td>
+<td>VAL</td>
+<td>NULL</td>
+<td>NONE</td>
+</tr></thead>
+<tbody>
+{% for pnt in points %}
+<tr>
+<td>{{pnt.time}}</td>
+<td>{{pnt.data}}</td>
+<td>{{pnt.null}}</td>
+<td>{{pnt.none}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

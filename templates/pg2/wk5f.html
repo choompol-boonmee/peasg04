@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "wk5_menu.html" %}
+{% endblock %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block table %} 
+<table class='tab1'>
+<caption>
+{{title}}
+</caption>
+<thead><tr>
+{% for c in self.repo().cols %}
+<td>{{c}}</td>
+{% endfor %}
+</tr></thead>
+<tbody>
+{% for r in 0..self.repo().rows.len() %}
+
+<tr>
+{% for c in 0..self.repo().cols.len() %}
+<td>{{self.cell(r,c)}}</td>
+{% endfor %}
+</tr>
+
+{% endfor %}
+
+<tr>
+{% for c in 0..self.repo().cols.len() %}
+<td>{{self.sum(c)}}</td>
+{% endfor %}
+</tr>
+
+{% endblock %}
+

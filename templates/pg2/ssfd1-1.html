@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block table %} 
+<table class='tab1'>
+<thead><tr>
+<td>Feeder</td>
+<td>good</td>
+<td>null</td>
+<td>none</td>
+<td>lead</td>
+<td>one</td>
+</tr></thead>
+<tbody>
+{% for s in ssv %}
+<tr class='chk'>
+<td colspan=6>
+สถานี {{s.sbst}}:: 
+สายป้อน {{s.feed.len()}}
+จังหวัด {{s.prov}}
+</td>
+</tr>
+
+{% for f in s.feed %}
+<tr>
+<td>
+<a href='/ssfd2/{{f.feed}}'>
+{{f.feed}}
+</a>
+</td>
+<td>{{f.good}}</td>
+<td>{{f.null}}</td>
+<td>{{f.none}}</td>
+<td>{{f.adj_lead}}</td>
+<td>{{f.adj_one}}</td>
+</tr>
+{% endfor %}
+{% endfor %}
+
+{% endblock %}

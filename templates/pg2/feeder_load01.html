@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}FEEDER LOAD{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+FEEDER LOAD
+{{ssid}}-{{fdid}}
+</caption>
+<thead><tr>
+<td>DAY</td>
+<td>VAL</td>
+<td>NULL</td>
+<td>NONE</td>
+<td>LEAD</td>
+<td>ONE</td>
+<td>FILL</td>
+<td>LAST</td>
+</tr></thead>
+<tbody>
+{% for dy in year_load.loads %}
+<tr>
+<td>
+<a href='/feeder_oneday01/{{ssid}}/{{fdid}}/{{dy.day}}'>
+{{loop.index}}
+</a></td>
+<td>{{dy.data_quality.good}}</td>
+<td>{{dy.data_quality.null}}</td>
+<td>{{dy.data_quality.none}}</td>
+<td>{{dy.data_quality.adj_lead}}</td>
+<td>{{dy.data_quality.adj_one}}</td>
+<td>{{dy.data_quality.adj_fill}}</td>
+<td>{{dy.data_quality.adj_last}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

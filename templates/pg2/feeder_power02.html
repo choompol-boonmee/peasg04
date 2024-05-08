@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_list_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER POWER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF FEEDER in 
+{{ssid}}
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>Feeder ID</td>
+<td>PEAK+(MW)</td>
+<td>AVG+(MW)</td>
+<td>ENER+(MWH)</td>
+<td>TRANS</td>
+<td>TX PEA</td>
+<td>TX CUS</td>
+<td>METER</td>
+<td>METER3</td>
+<td>OUT(H)</td>
+</tr></thead>
+<tbody>
+{% for fd in feeders %}
+<tr>
+<td>{{loop.index}}</td>
+<td>
+<a href='/feeder_yrpw01/{{ssid}}/{{fd.fdid}}'>
+{{fd.fdid}}
+</a>
+</td>
+
+<td> {{fd.power_quality.pos_peak.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_avg.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_energy.separate_with_commas()}} </td>
+
+<td>
+<a href='/feeder_tranx01/{{ssid}}/{{fd.fdid}}'>
+{{fd.tx_no}}
+</a>
+</a>
+</td>
+<td> {{fd.tx_pea}} </td>
+<td> {{fd.tx_cus}} </td>
+<td> {{fd.mt1_no}} </td>
+<td> {{fd.mt3_no}} </td>
+
+<td> {{"{:.2?}"|format(fd.outage)}} </td>
+
+</tr>
+{% endfor %}
+{% endblock %}
+

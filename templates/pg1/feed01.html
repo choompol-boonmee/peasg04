@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block table %} 
+<table class='tab1'>
+<thead><tr>
+<td>Feeder</td>
+<td>1st</td>
+<td>good</td>
+<td>null</td>
+<td>none</td>
+</tr></thead>
+<tbody>
+{% for s in ssv %}
+<tr class='chk'>
+<td colspan=5>
+{{s.sbst}}:: {{s.feed.len()}}
+</td>
+</tr>
+ 
+{% for f in s.feed %}
+<tr>
+<td>{{f.feed}}</td>
+<td>{{f.fstday}}</td>
+<td>{{f.good}}</td>
+<td>{{f.null}}</td>
+<td>{{f.none}}</td>
+</tr>
+{% endfor %}
+{% endfor %}
+
+{% endblock %}

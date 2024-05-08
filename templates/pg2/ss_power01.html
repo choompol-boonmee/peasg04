@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "ss_list_menu.html" %}
+{% endblock %}
+
+{% block title %}SUBSTATION LIST{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF SUBSTATION
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>SS ID</td>
+<td>SS name</td>
+<td>province</td>
+<td>feeders</td>
+<td>valid fds</td>
+<td>PEAK+</td>
+<td>CNT+</td>
+<td>SUM+</td>
+<td>AVG+</td>
+<td>ENER+</td>
+<td>PEAK-</td>
+<td>CNT-</td>
+<td>SUM-</td>
+<td>AVG-</td>
+<td>ENER-</td>
+</tr></thead>
+<tbody>
+{% for ss in ssv %}
+<tr>
+<td>
+{{loop.index}}
+</td>
+<td>
+<a href='/feeder_list01/{{ss.ssid}}'>
+{{ss.ssid}}
+</a>
+</td>
+<td>{{ss.name}}</td>
+<td>{{ss.prov}}</td>
+<td>{{ss.fdno}}</td>
+<td>{{ss.fdno_valid}}</td>
+<td>{{ss.power_quality.pos_peak}}</td>
+<td>{{ss.power_quality.pos_cnt}}</td>
+<td>{{ss.power_quality.pos_sum}}</td>
+<td>{{ss.power_quality.pos_avg}}</td>
+<td>{{ss.power_quality.pos_energy}}</td>
+<td>{{ss.power_quality.neg_peak}}</td>
+<td>{{ss.power_quality.neg_cnt}}</td>
+<td>{{ss.power_quality.neg_sum}}</td>
+<td>{{ss.power_quality.neg_avg}}</td>
+<td>{{ss.power_quality.neg_energy}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

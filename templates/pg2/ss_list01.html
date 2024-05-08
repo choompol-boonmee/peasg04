@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "ss_list_menu.html" %}
+{% endblock %}
+
+{% block title %}SUBSTATION LIST{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF SUBSTATION
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>SS ID</td>
+<td>SS name</td>
+<td>province</td>
+<td>feeders</td>
+<td>valid fds</td>
+<td>valid data</td>
+<td>null data</td>
+<td>none data</td>
+<td>adj_lead</td>
+<td>adj_one</td>
+<td>adj_fill</td>
+<td>adj_last</td>
+</tr></thead>
+<tbody>
+{% for ss in ssv %}
+<tr>
+<td>
+{{loop.index}}
+</td>
+<td>
+<a href='/feeder_list01/{{ss.ssid}}'>
+{{ss.ssid}}
+</a>
+</td>
+<td>{{ss.name}}</td>
+<td>{{ss.prov}}</td>
+<td>{{ss.fdno}}</td>
+<td>{{ss.fdno_valid}}</td>
+<td>{{ss.data_cleaned.good}}</td>
+<td>{{ss.data_cleaned.null}}</td>
+<td>{{ss.data_cleaned.none}}</td>
+<td>{{ss.data_quality.adj_lead}}</td>
+<td>{{ss.data_quality.adj_one}}</td>
+<td>{{ss.data_quality.adj_fill}}</td>
+<td>{{ss.data_quality.adj_last}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

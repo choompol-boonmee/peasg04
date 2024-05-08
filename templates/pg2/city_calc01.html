@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "ss_list_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER POWER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+CALCULATE 
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>SS ID</td>
+<td>SS NAME</td>
+<td>จังหวัด</td>
+<td>FD ID</td>
+<td>MWH</td>
+<td>PEAK</td>
+<td>AVG</td>
+<td>MWH0</td>
+<td>TX</td>
+<td>txPEA</td>
+<td>txCUS</td>
+<td>METER1</td>
+<td>METER3</td>
+<td>OUT(hr)</td>
+</tr></thead>
+<tbody>
+{% for r in rw %}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{wk.ssv[r.s].ssid}}</td>
+<td>{{wk.ssv[r.s].name}}</td>
+<td>{{wk.ssv[r.s].prov}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].fdid}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].year_load.power_quality.pos_energy}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].year_load.power_quality.pos_peak}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].year_load.power_quality.pos_avg}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].para1.energy}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].tx.tx_no}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].tx.tx_pea}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].tx.tx_cus}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].tx.mt1_no}}</td>
+<td>{{wk.ssv[r.s].feeders[r.f].tx.mt3_no}}</td>
+<td>{{"{:.2?}"|format( wk.ssv[r.s].feeders[r.f].outage_hour ) }}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_list_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER POWER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF FEEDER in 
+{{ssid}}
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>Feeder ID</td>
+<td>PEAK+</td>
+<td>CNT+</td>
+<td>SUM+</td>
+<td>AVG+</td>
+<td>ENER+</td>
+<td>PEAK-</td>
+<td>CNT-</td>
+<td>SUM-</td>
+<td>AVG-</td>
+<td>ENER-</td>
+<td>TX</td>
+<td>METER</td>
+<td>METER3</td>
+</tr></thead>
+<tbody>
+{% for fd in feeders %}
+<tr>
+<td>{{loop.index}}</td>
+<td>
+<a href='/feeder_yrpw01/{{ssid}}/{{fd.fdid}}'>
+{{fd.fdid}}
+</a>
+</td>
+<td> {{fd.power_quality.pos_peak.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_cnt.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_sum.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_avg.separate_with_commas()}} </td>
+<td> {{fd.power_quality.pos_energy.separate_with_commas()}} </td>
+
+<td> {{fd.power_quality.neg_peak.separate_with_commas()}} </td>
+<td> {{fd.power_quality.neg_cnt.separate_with_commas()}} </td>
+<td> {{fd.power_quality.neg_sum.separate_with_commas()}} </td>
+<td> {{fd.power_quality.neg_avg.separate_with_commas()}} </td>
+<td> {{fd.power_quality.neg_energy.separate_with_commas()}} </td>
+
+<td> {{fd.tx_no}} </td>
+<td> {{fd.mt1_no}} </td>
+<td> {{fd.mt3_no}} </td>
+</tr>
+{% endfor %}
+{% endblock %}
+

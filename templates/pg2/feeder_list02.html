@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_list_menu.html" %}
+{% endblock %}
+
+{% block title %}LIST OF FEEDER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF FEEDER in 
+{{ssid}}
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>Feeder ID</td>
+<td>2022</td>
+<td>valid</td>
+<td>inval</td>
+<td>none</td>
+<td>adj_lead</td>
+<td>adj_one</td>
+<td>adj_fill</td>
+<td>adj_last</td>
+<td>2021</td>
+</tr></thead>
+<tbody>
+{% for fd in feeders %}
+<tr>
+<td>{{loop.index}}</td>
+<td>
+{{fd.fdid}}
+<td>
+<a href='/feeder_year01/{{ssid}}/{{fd.fdid}}'>
+{{fd.year_ldlen}}
+</a>
+</td>
+<td>
+{{fd.data_cleaned.good}}
+</td>
+<td>
+{{fd.data_cleaned.null}}
+</td>
+<td>
+{{fd.data_cleaned.none}}
+</td>
+<td>
+{{fd.data_quality.adj_lead}}
+</td>
+<td>
+{{fd.data_quality.adj_one}}
+</td>
+<td>
+{{fd.data_quality.adj_fill}}
+</td>
+<td>
+{{fd.data_quality.adj_last}}
+</td>
+<td>
+<a href='/feeder_load02/{{ssid}}/{{fd.fdid}}'>
+{{fd.last_year_ldlen}}
+</a>
+</td>
+</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

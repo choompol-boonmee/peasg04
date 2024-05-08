@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "ss_list_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER POWER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+CALCULATE 
+</caption>
+<thead><tr>
+{% for c in wk.repo1.cols %}
+<td>{{c}}</td>
+{% endfor %}
+</tr></thead>
+<tbody>
+{% for r in 0..wk.repo1.rows.len() %}
+<tr>
+{% for c in 0..wk.repo1.cols.len() %}
+<td>{{self.cell(r,c)}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+{% endblock %}
+

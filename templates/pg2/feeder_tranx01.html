@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_list_menu.html" %}
+{% endblock %}
+
+{% block title %}FEEDER TRANSFOMER{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+LIST OF TRANSFORMER ({{ssid}},{{fdid}}) 
+{{ssid}}
+</caption>
+<thead><tr>
+<td>NO</td>
+<td>FD ID</td>
+<td>TX ID</td>
+<td>POWER</td>
+<td>OWNER</td>
+<td>PHS A</td>
+<td>PHS B</td>
+<td>PHS C</td>
+<td>MT 1PH</td>
+<td>MT 3PH</td>
+<td>MT ELSE</td>
+</tr></thead>
+<tbody>
+{% for tx in trans %}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{tx.fd_id}}</td>
+<td>{{tx.tx_id}}</td>
+<td>{{tx.tx_power}}</td>
+<td>{{tx.tx_own}}</td>
+<td>{{tx.mt_ph_a}}</td>
+<td>{{tx.mt_ph_b}}</td>
+<td>{{tx.mt_ph_c}}</td>
+<td>{{tx.mt_1_ph}}</td>
+<td>{{tx.mt_3_ph}}</td>
+<td>{{tx.mt_else}}</td>
+</tr>
+{% endfor %}
+{% endblock %}
+

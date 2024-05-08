@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% include "feeder_list_menu.html" %}
+{% endblock %}
+
+{% block title %}SUBSTATION YEAR LOAD{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+SUBSTATION YEAR LOAD
+{{ssid}}
+</caption>
+<thead><tr>
+<td>DAY</td>
+<td>VAL</td>
+<td>NULL</td>
+<td>NONE</td>
+</tr></thead>
+<tbody>
+{% for dy in year_load.loads %}
+<tr>
+<td>
+<a href='/ss_day01/{{ssid}}/{{dy.day}}'>
+{{dy.day}}
+</a></td>
+</tr>
+{% endfor %}
+{% endblock %}
+

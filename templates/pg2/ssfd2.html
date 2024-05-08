@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+{% block table %} 
+<table class='tab1'>
+<caption>
+{{ssid}}
+::
+{{ssnm}}
+:: {{dayloads.len()}}
+</caption>
+<thead><tr>
+<td>Feeder</td>
+<td>good</td>
+<td>null</td>
+<td>none</td>
+<td>lead</td>
+<td>tobu</td>
+</tr></thead>
+<tbody>
+{% for load in dayloads %}
+<tr>
+<td>
+{{load.day}}
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+{% endfor %}
+{% endblock %}
+
