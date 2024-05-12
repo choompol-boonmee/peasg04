@@ -11,6 +11,7 @@ askama_axum = "0.4.0"
 axum = { version = "0.7.4", features = ["http2", "multipart"] }
 bincode = "1.3.3"
 chrono = "0.4.34"
+#libxlsxwriter-sys = "1.1.5"
 plotters = "0.3.5"
 regex = "1.10.3"
 serde = "1.0.196"
@@ -18,4 +19,4 @@ thousands = "0.2.0"
 tokio = { version = "1.36.0", features = ["full"] }
 toml = "0.8.10"
 uuid = { version = "1.7.0", features = ["v4"] }
-xlsxwriter = "0.6.0"
+#xlsxwriter = "0.6.0"

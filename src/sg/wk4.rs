@@ -209,6 +209,7 @@ impl Task {
 
     pub async fn load_wk4prc(&mut self) {
         if let Ok(file) = File::open("data/wk4prc.bin") {
+        print!("...2\n");
             let rd = BufReader::new(file);
             if let Ok(wk4prc) = bincode::deserialize_from::<BufReader<File>, Wk4Proc>(rd) {
                 let bs = base();

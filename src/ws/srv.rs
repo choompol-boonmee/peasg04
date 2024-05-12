@@ -1,5 +1,6 @@
 #![allow(unused)]
-use crate::sg::{pg1, pg2, pg3, pg4, pg5, pg6, pg7, root};
+//use crate::sg::{pg1, pg2, pg3, pg4, pg5, pg6, pg7, root};
+use crate::sg::{pg1, pg2, pg3, pg4, root};
 use crate::web;
 use crate::web::{city_calc01, city_calc02, feeder_power02, feeder_power03};
 use crate::web::{feeder_day01, feeder_tranx01, feeder_year01};
